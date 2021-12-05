@@ -19,7 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ServerController {
-    static final String BASE_URL = "http://192.168.0.103:5000/api/";
+    //1static final String BASE_URL = "http://192.168.0.103:5000/api/";
+    static final String BASE_URL = "http://192.168.0.116:5000/api/";
     public static final String KEY_ID_SESSION = "idSession";
 
     private String session;
@@ -32,6 +33,16 @@ public class ServerController {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
+
+    public void loadData(){
+        start();
+
+    }
+
+    public void loadUser(){
+
+    }
+
 
     public String getSession() {
         return session;

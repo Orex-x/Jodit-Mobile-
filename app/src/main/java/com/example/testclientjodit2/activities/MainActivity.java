@@ -72,55 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-
-/*
-            Call<List<User>> users = api.getUsers(idSession);
-
-            users.enqueue(new Callback<List<User>>() {
-                @Override
-                public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                    String res = "";
-                    for (User g : response.body()) {
-                        res += g.email + "\n";
-                    }
-                    txt.setText(res);
-                }
-
-                @Override
-                public void onFailure(Call<List<User>> call, Throwable t) {
-
-                }
-            });*/
-
-
-
-
-
-
-           /* messages.enqueue(new Callback<List<UserGroup>>() {
-                @Override
-                public void onResponse(Call<List<UserGroup>> call, Response<List<UserGroup>> response) {
-                    if (response.isSuccessful()) {
-                        String res = "";
-                        for (UserGroup g : response.body()) {
-                            res += g.Group.GroupName + "\n";
-                        }
-                        txt.setText(res);
-                    }
-                }
-                @Override
-                public void onFailure(Call<List<UserGroup>> call, Throwable t) {
-
-                }
-            });
-*/
-
-           /* String res = "";
-            ArrayList<UserGroup> list = serverController.getGroups(idSession);
-            for (UserGroup g : list) {
-                res += g.Group.GroupName + "\n";
-            }
-            txt.setText(res);*/
         }
     }
 }

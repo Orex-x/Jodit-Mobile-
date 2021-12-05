@@ -3,6 +3,7 @@ package com.example.testclientjodit2.activities;
 import com.example.testclientjodit2.R;
 import com.example.testclientjodit2.api.ServerController;
 import com.example.testclientjodit2.api.ServerApi;
+import com.example.testclientjodit2.database.MySQL;
 import com.example.testclientjodit2.models.viewModels.LoginModel;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,7 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         String password = edtPassword.getText().toString();
         if (email.length() > 0 && password.length() > 0) {
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.0.103:5000/api/")
+                  //  .baseUrl("http://192.168.0.103:5000/api/")
+                    .baseUrl("http://192.168.0.116:5000/api/")
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();

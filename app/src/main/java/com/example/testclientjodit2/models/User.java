@@ -1,35 +1,65 @@
 package com.example.testclientjodit2.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class User {
-   
+
+
     public int idUser;
-    
+
+    @SerializedName("firstName")
+    @Expose
     public String firstName;
-    
+
+    @SerializedName("firstName")
+    @Expose
     public String secondName;
 
+
+    @SerializedName("firstName")
+    @Expose
     public String lastName;
-    
+
+
+    @SerializedName("firstName")
+    @Expose
     public String login;
-    
+
+
+    @SerializedName("firstName")
+    @Expose
     public String phone;
-    
+
+
+    @SerializedName("firstName")
+    @Expose
     public String email;
-    
+
+
+    @SerializedName("firstName")
+    @Expose
     public String userPassword;
 
 
+
+    @SerializedName("groups")
+    @Expose
     // UserGroup
     public List<Group> groups;
     
     public List<UserGroup> userGroups;
 
 
+    @SerializedName("groupInvitations")
+    @Expose
     // GroupInvite
     public List<GroupInvite> groupInvitations;
-        
+
+    @SerializedName("groupApplications")
+    @Expose
     public List<GroupInvite> groupApplications;
 
 
