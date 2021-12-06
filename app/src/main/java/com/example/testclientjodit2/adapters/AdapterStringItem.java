@@ -7,18 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-
 import com.example.testclientjodit2.R;
-import com.example.testclientjodit2.models.Group;
 
 import java.util.List;
 
-public class AdapterGroupItem extends BaseAdapter {
+public class AdapterStringItem extends BaseAdapter {
 
-    private List<Group> list;
+    private List<String> list;
     private LayoutInflater layoutInflater;
 
-    public AdapterGroupItem(Context context, List<Group> list) {
+    public AdapterStringItem(Context context, List<String> list) {
         this.list = list;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -45,13 +43,13 @@ public class AdapterGroupItem extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.item_group, parent, false);
         }
 
-        Group group = getGroup(position);
+        String str = getStr(position);
         TextView textView = (TextView) view.findViewById(R.id.textView);
-        textView.setText(group.GroupName);
+        textView.setText(str);
         return view;
     }
 
-    private Group getGroup(int position){
-        return (Group) getItem(position);
+    private String getStr(int position){
+        return (String) getItem(position);
     }
 }

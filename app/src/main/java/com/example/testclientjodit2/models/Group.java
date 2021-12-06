@@ -38,6 +38,9 @@ public class Group {
     
     public List<ScheduleStatement> ScheduleStatements;
 
+    public Group() {
+    }
+
     public Group(int idGroup, String groupName, String description,
                  String dateOfCreation, Boolean isPrivate, List<User> users, List<UserGroup> userGroups,
                  List<GroupInvite> groupInvites, List<UserMission> userMissions, List<ScheduleChange> scheduleChanges,

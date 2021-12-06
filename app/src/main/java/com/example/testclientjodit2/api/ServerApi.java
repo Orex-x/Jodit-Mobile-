@@ -17,15 +17,15 @@ import retrofit2.http.Query;
 
 public interface ServerApi {
 
-        @GET("Account/GetUser")
-        Call<User> getUser(@Query("idSession") String idSession);
+        @GET("Account/GetUserAPI")
+        Call<User> GetUserAPI(@Query("idSession") String idSession);
 
-        @GET("Account/GetUserGroup")
-        Call<List<UserGroup>> getUserGroup(@Query("idSession") String idSession);
-
-        @DELETE("Account/CloseSession")
+        @DELETE("Account/CloseSessionAPI")
         void closeSession(@Query("idSession") String idSession);
 
         @POST("Account/LoginAPI")
-        Call<String> login(@Body LoginModel model);
+        Call<String> LoginAPI(@Body LoginModel model);
+
+        @POST("Account/AddGroup")
+        Call<Integer> AddGroup(@Query("idSession") String idSession, @Body Group group);
 }

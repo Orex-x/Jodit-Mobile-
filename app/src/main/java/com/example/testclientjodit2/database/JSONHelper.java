@@ -2,6 +2,7 @@ package com.example.testclientjodit2.database;
 
 import android.content.Context;
 
+import com.example.testclientjodit2.models.Group;
 import com.example.testclientjodit2.models.User;
 import com.google.gson.Gson;
 
@@ -14,34 +15,48 @@ import java.util.List;
 public class JSONHelper {
     private static final String FILE_NAME = "data.json";
 
-    public static boolean exportToJSON(Context context, User user) {
+
+    public static String exportUserToJSON(User user) {
 
         Gson gson = new Gson();
         DataItems dataItems = new DataItems();
         dataItems.setUser(user);
         String jsonString = gson.toJson(dataItems);
-
-        try(FileOutputStream fileOutputStream =
-                    context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE)) {
-            fileOutputStream.write(jsonString.getBytes());
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return false;
+        return jsonString;
     }
 
-    static User importFromJSON(Context context) {
+    public static String exportGroupsToJSON(List<Group> groups) {
 
-        try(FileInputStream fileInputStream = context.openFileInput(FILE_NAME);
-            InputStreamReader streamReader = new InputStreamReader(fileInputStream)){
+        Gson gson = new Gson();
+        DataItems dataItems = new DataItems();
+        dataItems.setGroup(groups);
+        String jsonString = gson.toJson(dataItems);
+        return jsonString;
+    }
 
+    public static User importUserFromJSON(String jsonString) {
+
+        try{
             Gson gson = new Gson();
-            DataItems dataItems = gson.fromJson(streamReader, DataItems.class);
-            return  dataItems.getUser();
+            DataItems dataItems = gson.fromJson(jsonString, DataItems.class);
+            return dataItems.getUser();
         }
-        catch (IOException ex){
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+    public static List<Group> importGroupsFromJSON(String jsonString) {
+
+        try{
+            Gson gson = new Gson();
+            DataItems dataItems = gson.fromJson(jsonString, DataItems.class);
+            return dataItems.getGroup();
+        }
+        catch (Exception ex){
             ex.printStackTrace();
         }
 
@@ -50,12 +65,20 @@ public class JSONHelper {
 
     private static class DataItems {
         private User user;
+        private List<Group> groups;
 
         User getUser() {
             return user;
         }
         void setUser(User user) {
             this.user = user;
+        }
+
+        List<Group> getGroup() {
+            return groups;
+        }
+        void setGroup(List<Group> groups) {
+            this.groups = groups;
         }
     }
 }

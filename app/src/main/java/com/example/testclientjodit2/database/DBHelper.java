@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "JoditLite";
 
     public static final String TABLE_USERS = "jodit_user";
@@ -14,8 +14,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String KEY_ID = "_id";
 
-    public static final String KEY_USER_JSON = "_user";
-    public static final String KEY_GROUP_JSON = "_group";
+    public static final String KEY_USER_JSON = "key_user";
+    public static final String KEY_GROUP_JSON = "key_group";
 
     public DBHelper( Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,10 +26,10 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_USERS +
-                "(" + KEY_ID + " integer primary key," + KEY_USER_JSON + ")");
+                "(" + KEY_ID + " integer primary key," + KEY_USER_JSON + " text " + ")");
 
         db.execSQL("create table " + TABLE_GROUPS +
-                "(" + KEY_ID + " integer primary key," + KEY_GROUP_JSON + ")");
+                "(" + KEY_ID + " integer primary key," + KEY_GROUP_JSON + " text " + ")");
 
 
 

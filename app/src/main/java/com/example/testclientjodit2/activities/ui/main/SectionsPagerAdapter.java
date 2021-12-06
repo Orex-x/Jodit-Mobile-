@@ -23,7 +23,7 @@ import com.example.testclientjodit2.fragments.FragmentSettings;
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    Fragment[] fragments = new Fragment[]{new FragmentGroup(), new FragmentAccount(), new FragmentSettings()};
+    public Fragment[] fragments = new Fragment[]{new FragmentGroup(), new FragmentAccount(), new FragmentSettings()};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {

@@ -7,39 +7,40 @@ import java.util.List;
 
 public class User {
 
-
+    @SerializedName("idUser")
+    @Expose
     public int idUser;
 
     @SerializedName("firstName")
     @Expose
     public String firstName;
 
-    @SerializedName("firstName")
+    @SerializedName("secondName")
     @Expose
     public String secondName;
 
 
-    @SerializedName("firstName")
+    @SerializedName("lastName")
     @Expose
     public String lastName;
 
 
-    @SerializedName("firstName")
+    @SerializedName("login")
     @Expose
     public String login;
 
 
-    @SerializedName("firstName")
+    @SerializedName("phone")
     @Expose
     public String phone;
 
 
-    @SerializedName("firstName")
+    @SerializedName("email")
     @Expose
     public String email;
 
 
-    @SerializedName("firstName")
+    @SerializedName("userPassword")
     @Expose
     public String userPassword;
 
@@ -63,18 +64,28 @@ public class User {
     public List<GroupInvite> groupApplications;
 
 
+    @SerializedName("authors")
+    @Expose
     // UserJoditTask
     public List<UserMission> authors;
-    
+
+
+    @SerializedName("executors")
+    @Expose
     public List<UserMission> executors;
 
-
     // ScheduleChange
+    @SerializedName("scheduleChangesBeforeUsers")
+    @Expose
     public List<ScheduleChange> scheduleChangesBeforeUsers;
-    
+
+    @SerializedName("scheduleChangesAfterUsers")
+    @Expose
     public List<ScheduleChange> scheduleChangesAfterUsers;
-        
+
     // ScheduleStatement
+    @SerializedName("beforeUsers")
+    @Expose
     public List<ScheduleStatement> beforeUsers;
 
 

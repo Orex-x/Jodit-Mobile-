@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.testclientjodit2">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestClientJodit2"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activities.GroupActivity"
+            android:exported="true"
+            android:label="@string/title_activity_group"
+            android:theme="@style/Theme.TestClientJodit2.NoActionBar" />
         <activity
             android:name=".activities.MainActivity"
             android:exported="false"

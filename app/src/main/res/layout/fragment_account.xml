@@ -25,50 +25,84 @@
         </me.fahmisdk6.avatarview.AvatarView>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txtFirstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:fontFamily="@font/marry_trace"
-            android:text="Shelkonogov"
+            android:text="FirstName"
             android:textSize="28sp"
             app:layout_constraintStart_toEndOf="@+id/avatarView"
             app:layout_constraintTop_toTopOf="@+id/avatarView" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/txtSecondName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:fontFamily="@font/marry_trace"
-            android:text="Daniil"
+            android:text="SecondName"
             android:textSize="28sp"
             app:layout_constraintStart_toEndOf="@+id/avatarView"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/txtFirstName" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnChange"
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:text="A"
             android:background="@drawable/ic_button_edit_two"
             app:layout_constraintBottom_toBottomOf="@+id/avatarView"
             app:layout_constraintStart_toEndOf="@+id/avatarView" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="150dp"
-            android:layout_height="50sp"
-            android:text="Friends"
-            android:layout_marginLeft="20dp"
-            android:fontFamily="@font/marry_trace"
-            android:background="@drawable/ic_button_long_two"
-            app:layout_constraintBottom_toBottomOf="@+id/avatarView"
-            app:layout_constraintStart_toEndOf="@+id/button" />
 
+        <Button
+            android:id="@+id/btnFriends"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/ic_button_edit_two"
+            android:fontFamily="@font/marry_trace"
+            android:text="F"
+            app:layout_constraintBottom_toBottomOf="@+id/avatarView"
+            app:layout_constraintStart_toEndOf="@+id/btnChange" />
+
+        <Button
+            android:id="@+id/btnGroupInvitation"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/ic_button_edit_two"
+            android:fontFamily="@font/marry_trace"
+            android:text="I"
+            app:layout_constraintBottom_toBottomOf="@+id/avatarView"
+            app:layout_constraintStart_toEndOf="@+id/btnFriends" />
+
+        <Button
+            android:id="@+id/btnGroupInvitation2"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/ic_button_edit_two"
+            android:fontFamily="@font/marry_trace"
+            android:text="M"
+            app:layout_constraintBottom_toBottomOf="@+id/avatarView"
+            app:layout_constraintStart_toEndOf="@+id/btnGroupInvitation" />
+
+        <Button
+            android:id="@+id/btnAddGroup"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_button_edit_two"
+            android:text="+"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <LinearLayout
             android:id="@+id/layout_account"
@@ -77,134 +111,12 @@
             android:layout_marginTop="150dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="28dp"
-                android:fontFamily="@font/marry_trace"
-                android:text="Account"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editTexPersonEmail"
-                android:layout_width="match_parent"
-                android:layout_height="50sp"
-                android:layout_marginLeft="40sp"
-                android:layout_marginRight="40sp"
-                android:ems="10"
-                android:fontFamily="@font/marry_trace"
-                android:paddingLeft="20dp"
-                android:background="@drawable/bezel"
-                android:inputType="textPersonName"
-                android:hint="Email" />
-
-            <EditText
-                android:id="@+id/editTextPersonPassword"
-                android:layout_width="match_parent"
-                android:layout_height="50sp"
-                android:layout_marginLeft="40sp"
-                android:layout_marginRight="40sp"
-                android:ems="10"
-                android:fontFamily="@font/marry_trace"
-                android:paddingLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bezel"
-                android:inputType="textPassword"
-                android:hint="@string/Password" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/marry_trace"
-                android:text="Info"
-                android:textSize="20sp" />
-<!--
-            <EditText
-                android:id="@+id/editTexPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="50sp"
-                android:layout_marginLeft="40sp"
-                android:layout_marginRight="40sp"
-                android:ems="10"
-                android:fontFamily="@font/marry_trace"
-                android:paddingLeft="20dp"
-                android:background="@drawable/bezel"
-                android:inputType="textPersonName"
-                android:hint="Name" />
-
-            <EditText
-                android:id="@+id/editTexPersonSurName"
-                android:layout_width="match_parent"
-                android:layout_height="50sp"
-                android:layout_marginLeft="40sp"
-                android:layout_marginRight="40sp"
-                android:layout_marginTop="5dp"
-                android:ems="10"
-                android:fontFamily="@font/marry_trace"
-                android:paddingLeft="20dp"
-                android:background="@drawable/bezel"
-                android:inputType="textPersonName"
-                android:hint="Surname" />
-
-
-            <EditText
-                android:id="@+id/editTexPersonPhone"
-                android:layout_width="match_parent"
-                android:layout_height="50sp"
-                android:layout_marginLeft="40sp"
-                android:layout_marginRight="40sp"
-                android:layout_marginTop="5dp"
-                android:ems="10"
-                android:fontFamily="@font/marry_trace"
-                android:paddingLeft="20dp"
-                android:background="@drawable/bezel"
-                android:inputType="textPersonName"
-                android:hint="Phone" />-->
-
-
             <ListView
-                android:id="@+id/listAccountInfo"
+                android:id="@+id/listviewGroups"
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_height="match_parent"
                 android:divider="@null" />
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_groups"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-           android:layout_marginTop="150dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="28dp"
-                android:fontFamily="@font/marry_trace"
-                android:text="Groups"
-                android:textSize="20sp" />
-
-            <ListView
-                android:id="@+id/list_groups_in_account"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-            />
         </LinearLayout>
 
 

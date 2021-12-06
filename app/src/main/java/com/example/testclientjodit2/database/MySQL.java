@@ -9,12 +9,18 @@ import java.util.ArrayList;
 public class MySQL {
 
 
-    public static void add(String json, String table, String key, DBHelper dbHelper){
-        SQLiteDatabase database = dbHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(key, json);
-        database.insert(table, null, contentValues);
-        dbHelper.close();
+    public static boolean add(String json, String table, String key, DBHelper dbHelper){
+        try{
+            SQLiteDatabase database = dbHelper.getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(key, json);
+            database.insert(table, null, contentValues);
+            dbHelper.close();
+            return true;
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return false;
     }
 
     public static ArrayList<String> get_all_value(String table, String key, DBHelper dbHelper){

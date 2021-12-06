@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void getGroups(View view) {
+  /*  public void getGroups(View view) {
         if(idSession != null){
 
             Retrofit retrofit = new Retrofit.Builder()
@@ -73,5 +73,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-    }
+    }*/
 }

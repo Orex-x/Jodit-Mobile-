@@ -19,18 +19,7 @@ import android.widget.ListView;
 import com.example.testclientjodit2.R;
 import com.example.testclientjodit2.activities.MainActivity2;
 import com.example.testclientjodit2.adapters.AdapterGroupItem;
-import com.example.testclientjodit2.api.ServerApi;
 import com.example.testclientjodit2.api.ServerController;
-import com.example.testclientjodit2.models.UserGroup;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
  public class FragmentGroup extends Fragment {
@@ -54,14 +43,14 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_group, null);
+        View v = inflater.inflate(R.layout.fragment_mission, null);
 
 
 
         button = v.findViewById(R.id.buttonAddGroup);
         listView = v.findViewById(R.id.list_groups);
-        adapterGroupItem = new AdapterGroupItem(getActivity(), MainActivity2.list_groups);
-        listView.setAdapter(adapterGroupItem);
+       // adapterGroupItem = new AdapterGroupItem(getActivity(), MainActivity2.list_groups);
+       // listView.setAdapter(adapterGroupItem);
         button = v.findViewById(R.id.buttonAddGroup);
 
         move_right_Animation = AnimationUtils.loadAnimation(getActivity(), R.anim.move_right);
@@ -69,7 +58,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v = inflater.inflate(R.layout.dialog_login, null);
+                v = inflater.inflate(R.layout.dialog_add_group, null);
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                 mBuilder.setView(v);
                 group_name = v.findViewById(R.id.group_name);

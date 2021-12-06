@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             ServerApi api = retrofit.create(ServerApi.class);
 
 
-            Call<String> idSession = api.login(new LoginModel(email, password));
+            Call<String> idSession = api.LoginAPI(new LoginModel(email, password));
             idSession.enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
