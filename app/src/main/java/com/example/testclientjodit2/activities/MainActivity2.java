@@ -91,11 +91,7 @@ public class MainActivity2 extends AppCompatActivity {
             bundle.putString("JSONGroups", JSONHelper.exportGroupsToJSON(mainUser.groups));
             sectionsPagerAdapter.fragments[1].setArguments(bundle);
         }
-
-
     }
-
-
 
     public void loadData(){
         if(idSession != null){
@@ -143,8 +139,13 @@ public class MainActivity2 extends AppCompatActivity {
                 Toast.makeText(MainActivity2.this,
                         "Отсутствует интернет подключение", Toast.LENGTH_LONG).show();
             }
-            ArrayList<String> list = MySQL.get_all_value(DBHelper.TABLE_USERS, DBHelper.KEY_USER_JSON, dbHelper);
-            mainUser = JSONHelper.importUserFromJSON(list.get(0));
+            try{
+                ArrayList<String> list = MySQL.get_all_value(DBHelper.TABLE_USERS, DBHelper.KEY_USER_JSON, dbHelper);
+                mainUser = JSONHelper.importUserFromJSON(list.get(0));
+            }catch (Exception e){
+                Toast.makeText(MainActivity2.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 
@@ -185,7 +186,6 @@ public class MainActivity2 extends AppCompatActivity {
                         }
                     }
                 }
-
                 @Override
                 public void onFailure(Call<Integer> call, Throwable t) {
 

@@ -50,33 +50,4 @@ public class ServerController {
     public void setRetrofit(Retrofit retrofit) {
         this.retrofit = retrofit;
     }
-
-
-   /* public ArrayList<UserGroup> getGroups(String idSession) {
-        if(idSession != null){
-            ArrayList<UserGroup> list = new ArrayList<>();
-            ServerApi api = retrofit.create(ServerApi.class);
-            Call<List<UserGroup>> messages = api.getUserGroup(idSession);
-
-            messages.enqueue(new Callback<List<UserGroup>>() {
-                @Override
-                public void onResponse(Call<List<UserGroup>> call, Response<List<UserGroup>> response) {
-                    if (response.isSuccessful()) {
-                        for (UserGroup userGroup : response.body()) {
-                            list.add(userGroup);
-                        }
-                    }
-                }
-                @Override
-                public void onFailure(Call<List<UserGroup>> call, Throwable t) {
-
-                }
-            });
-            return list;
-        }
-        return new ArrayList<>();
-    }*/
-
-
-
 }
