@@ -17,9 +17,6 @@ import com.example.testclientjodit2.activities.ui.main.SectionsPagerAdapter;
 
 
 public class GroupActivity extends AppCompatActivity {
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

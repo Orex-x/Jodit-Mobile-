@@ -17,26 +17,23 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.testclientjodit2.R;
-import com.example.testclientjodit2.activities.MainActivity2;
+import com.example.testclientjodit2.activities.HomeActivity;
+import com.example.testclientjodit2.activities.MissoinActivity;
 import com.example.testclientjodit2.adapters.AdapterGroupItem;
-import com.example.testclientjodit2.api.ServerController;
+import com.example.testclientjodit2.adapters.AdapterMission;
+import com.example.testclientjodit2.database.JSONHelper;
+import com.example.testclientjodit2.models.Mission;
+import com.example.testclientjodit2.models.UserMission;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
  public class FragmentGroup extends Fragment {
-
-    public ListView listView;
-    public Button button;
-
-    public static AdapterGroupItem adapterGroupItem;
-    public static Animation move_right_Animation;
-    public EditText group_name;
-
-    final String LOG_TAG = "myLogs";
-
-     ServerController serverController = new ServerController();
-     private String idSession = "k.LvN>8=NQvj;ES0yG=*svDLk";
-
-
+     ListView listView;
+     AdapterMission adapterMission;
+     List<UserMission> list;
 
 
     @Override
@@ -44,44 +41,17 @@ import com.example.testclientjodit2.api.ServerController;
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_mission, null);
-
-
-
-        button = v.findViewById(R.id.buttonAddGroup);
         listView = v.findViewById(R.id.list_groups);
-        button = v.findViewById(R.id.buttonAddGroup);
+        try{
+            String jsonListMissions = getArguments().getString("listMission");
+            list = JSONHelper.importListUserMissionFromJSON(jsonListMissions);
+            adapterMission = new AdapterMission(getActivity(), list);
+            listView.setAdapter(adapterMission);
+        }catch (Exception ex){
 
-        move_right_Animation = AnimationUtils.loadAnimation(getActivity(), R.anim.move_right);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v = inflater.inflate(R.layout.dialog_add_group, null);
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
-                mBuilder.setView(v);
-                group_name = v.findViewById(R.id.group_name);
-                mBuilder.setPositiveButton("Add", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        MainActivity2.list_groups.add( group_name.getText().toString());
-                        adapterGroupItem.notifyDataSetChanged();
-                    }
-                });
-                mBuilder.show();
-            }
-        });
-        setOnClickItem();
+        }
         return v;
     }
 
-    private void setOnClickItem(){
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
-    }
 }

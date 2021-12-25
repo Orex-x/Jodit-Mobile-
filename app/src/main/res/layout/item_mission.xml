@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/txtFrame"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/item_button_group"
+        android:gravity="fill_vertical"
+        android:paddingLeft="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Дела в саду"
+        android:textColor="@color/bg_text"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="@+id/txtFrame"
+        app:layout_constraintStart_toStartOf="@+id/txtFrame"
+        app:layout_constraintTop_toTopOf="@+id/txtFrame" />
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/bg_text"
+        android:text="asdfsadfhsjdkhfkjshadfkjhaskdfjhaskjdfhkj..."
+        app:layout_constraintStart_toStartOf="@+id/txtFrame"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,8 +20,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ServerController {
 
-    static final String BASE_URL = "http://192.168.0.103:5000/api/";
-    public static final String KEY_ID_SESSION = "idSession";
+    static final String BASE_URL = "http://192.168.0.103:5000/Api/";
+
 
     private String session;
     private Retrofit retrofit;

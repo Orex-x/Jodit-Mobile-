@@ -1,18 +1,32 @@
 package com.example.testclientjodit2.activities;
 
+import static android.provider.Telephony.Mms.Part.FILENAME;
+
 import com.example.testclientjodit2.R;
 import com.example.testclientjodit2.api.ServerController;
 import com.example.testclientjodit2.api.ServerApi;
-import com.example.testclientjodit2.database.MySQL;
+import com.example.testclientjodit2.database.DBHelper;
+import com.example.testclientjodit2.database.JSONHelper;
+import com.example.testclientjodit2.models.UserSession;
 import com.example.testclientjodit2.models.viewModels.LoginModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,8 +44,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
+
         init();
+        checkSession();
+
     }
 
     public void Register(View view) {
@@ -42,24 +60,20 @@ public class LoginActivity extends AppCompatActivity {
         String email = edtEmail.getText().toString();
         String password = edtPassword.getText().toString();
         if (email.length() > 0 && password.length() > 0) {
-            Retrofit retrofit = new Retrofit.Builder()
-                  //  .baseUrl("http://192.168.0.103:5000/api/")
-                    .baseUrl("http://192.168.0.116:5000/api/")
-                    .addConverterFactory(ScalarsConverterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            ServerApi api = retrofit.create(ServerApi.class);
+            ServerController controller = new ServerController();
+            controller.start();
+            ServerApi api = controller.getRetrofit().create(ServerApi.class);
 
+            Call<String> idSessionCall = api.LoginAPI(new LoginModel(email, password));
 
-            Call<String> idSession = api.LoginAPI(new LoginModel(email, password));
-            idSession.enqueue(new Callback<String>() {
+            idSessionCall.enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
                     if (response.isSuccessful()) {
                         if (response.body() != null) {
-                            Toast.makeText(LoginActivity.this, response.body(), Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra(ServerController.KEY_ID_SESSION, response.body());
+                            saveSession(response.body());
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            intent.putExtra(DBHelper.INTENT_KEY_SESSION, response.body());
                             startActivity(intent);
                         }
                     } else {
@@ -69,12 +83,50 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    Toast.makeText(LoginActivity.this, "error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+
                 }
             });
         }
     }
 
+    public void checkSession() {
+          FileInputStream fin = null;
+        try {
+            fin = openFileInput(DBHelper.FILE_NAME_SESSION);
+            byte[] bytes = new byte[fin.available()];
+            fin.read(bytes);
+            String id_session = new String(bytes);
+
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            intent.putExtra(DBHelper.INTENT_KEY_SESSION, id_session);
+            startActivity(intent);
+
+        } catch (IOException ex) {
+
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        } finally {
+            try {
+                if (fin != null)
+                    fin.close();
+            } catch (IOException ex) {
+
+                Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    void saveSession(String idSession) {
+        try {
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+                    openFileOutput(DBHelper.FILE_NAME_SESSION, MODE_PRIVATE)));
+            bw.write(idSession);
+            bw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void init() {
         edtEmail = findViewById(R.id.edtEmail);

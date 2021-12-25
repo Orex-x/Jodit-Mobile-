@@ -17,6 +17,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String KEY_USER_JSON = "key_user";
     public static final String KEY_GROUP_JSON = "key_group";
 
+    public final static String FILE_NAME_SESSION = "session.txt";
+    public final static String FILE_NAME_USER = "user.txt";
+    public final static String FILE_NAME_USER_SESSION = "user_session.txt";
+
+    public final static String INTENT_KEY_SESSION = "intent_session";
+    public final static String INTENT_KEY_USER_SESSION = "intent_user_session";
+    public final static String INTENT_KEY_USER = "intent_user";
+
     public DBHelper( Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
