@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/drawable/bezel.xml" value="0.20625" />
         <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/drawable/item_button_group.xml" value="0.3671875" />
+        <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/layout/activity_deletethis.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/layout/activity_group.xml" value="0.271875" />
         <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/layout/activity_main.xml" value="0.18795289855072464" />
@@ -20,6 +21,8 @@
         <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/layout/item_edit_text.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/layout/item_group.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/layout/item_mission.xml" value="0.33" />
+        <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/layout/item_string.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/dana/AndroidStudioProjects/Jodit-Mobile-/app/src/main/res/layout/null_item.xml" value="0.315625" />
         <entry key="..\:/Users/dana/AndroidStudioProjects/TestClientJodit2/app/src/main/res/layout/activity_login.xml" value="0.3151041666666667" />
         <entry key="..\:/Users/dana/AndroidStudioProjects/TestClientJodit2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/dana/AndroidStudioProjects/TestClientJodit2/app/src/main/res/xml/network_security_config.xml" value="0.31614583333333335" />

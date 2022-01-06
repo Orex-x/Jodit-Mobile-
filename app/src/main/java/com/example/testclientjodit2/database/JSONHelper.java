@@ -2,6 +2,7 @@ package com.example.testclientjodit2.database;
 
 import android.content.Context;
 
+import com.example.testclientjodit2.activities.MissoinActivity;
 import com.example.testclientjodit2.models.Group;
 import com.example.testclientjodit2.models.Mission;
 import com.example.testclientjodit2.models.User;
@@ -43,18 +44,64 @@ public class JSONHelper {
         return null;
     }
 
-
-    public static String exportListUserMissionToJSON(List<UserMission> missions) {
+    public static String exportMissionToJSON(Mission mission) {
 
         Gson gson = new Gson();
         DataItems dataItems = new DataItems();
-        dataItems.setUserMission(missions);
+        dataItems.setMission(mission);
         String jsonString = gson.toJson(dataItems);
         return jsonString;
     }
 
 
-    public static List<UserMission> importListUserMissionFromJSON(String jsonString) {
+    public static Mission importMissionFromJSON(String jsonString) {
+
+        try{
+            Gson gson = new Gson();
+            DataItems dataItems = gson.fromJson(jsonString, DataItems.class);
+            return dataItems.getMission();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String exportListUserMissionsToJSON(List<UserMission> missions) {
+
+        Gson gson = new Gson();
+        DataItems dataItems = new DataItems();
+        dataItems.setUserMissions(missions);
+        String jsonString = gson.toJson(dataItems);
+        return jsonString;
+    }
+
+
+    public static List<UserMission> importListUserMissionsFromJSON(String jsonString) {
+
+        try{
+            Gson gson = new Gson();
+            DataItems dataItems = gson.fromJson(jsonString, DataItems.class);
+            return dataItems.getUserMissions();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static String exportListUserMissionToJSON(UserMission mission) {
+
+        Gson gson = new Gson();
+        DataItems dataItems = new DataItems();
+        dataItems.setUserMission(mission);
+        String jsonString = gson.toJson(dataItems);
+        return jsonString;
+    }
+
+
+    public static UserMission importListUserMissionFromJSON(String jsonString) {
 
         try{
             Gson gson = new Gson();
@@ -96,8 +143,10 @@ public class JSONHelper {
     private static class DataItems {
         private User user;
         private UserSession userSession;
+        private UserMission userMission;
+        private Mission mission;
         private List<Group> groups;
-        private List<UserMission> userMission;
+        private List<UserMission> userMissions;
 
         public UserSession getUserSession() {
             return userSession;
@@ -121,11 +170,27 @@ public class JSONHelper {
             this.groups = groups;
         }
 
-        public List<UserMission> getUserMission() {
+        public List<UserMission> getUserMissions() {
+            return userMissions;
+        }
+
+        public void setUserMissions(List<UserMission> userMission) {
+            this.userMissions = userMission;
+        }
+
+        public Mission getMission() {
+            return mission;
+        }
+
+        public void setMission(Mission mission) {
+            this.mission = mission;
+        }
+
+        public UserMission getUserMission() {
             return userMission;
         }
 
-        public void setUserMission(List<UserMission> userMission) {
+        public void setUserMission(UserMission userMission) {
             this.userMission = userMission;
         }
     }

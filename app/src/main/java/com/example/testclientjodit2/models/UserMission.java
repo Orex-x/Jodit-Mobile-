@@ -4,7 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class UserMission {
-    
+
+    @SerializedName("idUserMission")
+    @Expose
     public int IdUserMission;
         
       

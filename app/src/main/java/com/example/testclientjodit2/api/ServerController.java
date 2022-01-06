@@ -2,21 +2,25 @@ package com.example.testclientjodit2.api;
 
 
 
-import android.view.View;
-import android.widget.Toast;
+import static rx.android.schedulers.AndroidSchedulers.*;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 import com.example.testclientjodit2.models.User;
-import com.example.testclientjodit2.models.UserGroup;
+import com.example.testclientjodit2.models.viewModels.LoginModel;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
+
 
 public class ServerController {
 
@@ -26,12 +30,45 @@ public class ServerController {
     private String session;
     private Retrofit retrofit;
 
-    public void start() {
+/*    public void start() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(ScalarsConverterFactory.create())
+              //  .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
+               // .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+    }*/
+
+    public void startRx() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+
+        retrofit = new Retrofit.Builder()
+               // .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .baseUrl(BASE_URL)
+                .build();
+    }
+
+
+    public static boolean hasConnection(final Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected()) {
+            return true;
+        }
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected()) {
+            return true;
+        }
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected()) {
+            return true;
+        }
+        return false;
     }
 
 

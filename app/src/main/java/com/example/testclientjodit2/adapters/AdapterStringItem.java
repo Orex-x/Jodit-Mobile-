@@ -16,6 +16,7 @@ public class AdapterStringItem extends BaseAdapter {
     private List<String> list;
     private LayoutInflater layoutInflater;
 
+
     public AdapterStringItem(Context context, List<String> list) {
         this.list = list;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -40,11 +41,11 @@ public class AdapterStringItem extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if(view == null){
-            view = layoutInflater.inflate(R.layout.item_group, parent, false);
+            view = layoutInflater.inflate(R.layout.item_string, parent, false);
         }
 
         String str = getStr(position);
-        TextView textView = (TextView) view.findViewById(R.id.textView);
+        TextView textView =  view.findViewById(R.id.txt);
         textView.setText(str);
         return view;
     }
